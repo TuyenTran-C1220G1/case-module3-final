@@ -1,2 +1,4 @@
-package com.company.service;public class OrderService {
+package com.company.service;
+
+public class OrderService {
 }

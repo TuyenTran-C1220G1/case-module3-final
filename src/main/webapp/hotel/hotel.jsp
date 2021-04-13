@@ -5,6 +5,7 @@
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -118,10 +119,8 @@
             <c:forEach var="hotel" items="${hotels}">
                 <div style="border-top-style:solid ;border-top-width: 1px; border-top-color: lightslategrey;margin-top: 5px">
                     <p style="border-top: 2px #cccc; margin: 0 0 5px; padding: 0; font-weight: 700; text-transform: capitalize; font-size: 18px">
-                        <a class style="text-decoration:none" href="#">${hotel.nameHotel}</a></p>
-                    <p style="color: #555;font-family: 'Open Sans',sans-serif;line-height: 1.4em;"> Bãi Bắc, Sơn
-                        Trà, Đà Nẵng</p>
-                    <div class="row">
+                        <a class style="text-decoration:none" href="room?idHotel=${hotel.idHotel}">${hotel.nameHotel}</a></p>
+                                        <div class="row">
                         <div class="col-4 hotel-image">
                             <img src="${hotel.imageHotel}" ;width="238px" height="179px" width="100%" height="100%"></img>
                         </div>

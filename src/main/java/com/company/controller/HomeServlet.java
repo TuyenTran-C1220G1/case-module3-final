@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "Servlet", value = "/city")
-public class CityServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
     private CityService cityService = new CityService();
 
     @Override
