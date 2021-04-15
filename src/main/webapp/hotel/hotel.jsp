@@ -9,13 +9,12 @@
 </head>
 <body>
 
-
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container">
-    <jsp:include page="header.jsp"></jsp:include>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Khách sạn</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Khách sạn ${city.nameCity}</li>
+            <li class="breadcrumb-item active" aria-current="page">Khách sạn tại ${city.nameCity}</li>
         </ol>
     </nav>
     <div class="row">
@@ -128,7 +127,7 @@
                 <span style="display: block;"> <small>${hotel.descriptionHotel}</small>></span>
                             <span style="display: block;"><strong
                                     style="color: #4caf50;font-size: 20px;font-weight: 700;">Price</strong></span>
-                            <span style="display: block;"><button type="button" onclick='window.location.href="room?idHotel=${hotel.idHotel}"'>Book</button></span>
+                            <span style="display: block;"><button type="button" onclick='window.location.href="room?idHotel=${hotel.idHotel}"'>Chi Tiết</button></span>
                         </div>
                     </div>
                 </div>
@@ -137,11 +136,8 @@
         </div>
         <div class="col-2 advertise"></div>
     </div>
-    <jsp:include page="footer.jsp"></jsp:include>
-</div>
-
-
-
+    </div>
+<jsp:include page="footer.jsp"></jsp:include>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"

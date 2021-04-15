@@ -1,24 +1,22 @@
 package com.company.model;
 
-public class Room {
+public class RoomDetail {
     private int idRoom;
     private String nameRoom;
     private String descriptionRoom ;
     private double price;
     private String imageRoom;
-    private int idCate;
-    private int idHotel;
+    private String nameHotel;
+    private String nameCate;
 
-    public Room(){}
-
-    public Room(int idRoom, String nameRoom, String descriptionRoom, double price, String imageRoom, int idCate, int idHotel) {
+    public RoomDetail(int idRoom, String nameRoom, String descriptionRoom, double price, String imageRoom, String nameHotel, String nameCate) {
         this.idRoom = idRoom;
         this.nameRoom = nameRoom;
         this.descriptionRoom = descriptionRoom;
         this.price = price;
         this.imageRoom = imageRoom;
-        this.idCate = idCate;
-        this.idHotel = idHotel;
+        this.nameHotel = nameHotel;
+        this.nameCate = nameCate;
     }
 
     public int getIdRoom() {
@@ -61,32 +59,32 @@ public class Room {
         this.imageRoom = imageRoom;
     }
 
-    public int getIdCate() {
-        return idCate;
+    public String getNameHotel() {
+        return nameHotel;
     }
 
-    public void setIdCate(int idCate) {
-        this.idCate = idCate;
+    public void setNameHotel(String nameHotel) {
+        this.nameHotel = nameHotel;
     }
 
-    public int getIdHotel() {
-        return idHotel;
+    public String getNameCate() {
+        return nameCate;
     }
 
-    public void setIdHotel(int idHotel) {
-        this.idHotel = idHotel;
+    public void setNameCate(String nameCate) {
+        this.nameCate = nameCate;
     }
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "RoomDetail{" +
                 "idRoom=" + idRoom +
                 ", nameRoom='" + nameRoom + '\'' +
                 ", descriptionRoom='" + descriptionRoom + '\'' +
                 ", price=" + price +
                 ", imageRoom='" + imageRoom + '\'' +
-                ", idCate=" + idCate +
-                ", idHotel=" + idHotel +
+                ", nameHotel='" + nameHotel + '\'' +
+                ", nameCate='" + nameCate + '\'' +
                 '}';
     }
 }

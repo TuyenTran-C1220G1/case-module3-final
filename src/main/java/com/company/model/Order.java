@@ -1,18 +1,19 @@
 package com.company.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Order {
     private int idOrder;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private Date fromDate;
+    private Date toDate;
     private int idCustomer;
     private int idRoom;
 
     public Order() {
     }
 
-    public Order(int idOrder, LocalDate fromDate, LocalDate toDate, int idCustomer, int idRoom) {
+    public Order(int idOrder, Date fromDate, Date toDate, int idCustomer, int idRoom) {
         this.idOrder = idOrder;
         this.fromDate = fromDate;
         this.toDate = toDate;
@@ -28,19 +29,19 @@ public class Order {
         this.idOrder = idOrder;
     }
 
-    public LocalDate getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDate fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public LocalDate getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDate toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 

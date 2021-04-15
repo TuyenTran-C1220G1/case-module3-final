@@ -63,7 +63,6 @@
                                                     Ngày trả <br>
                                                     <input id="checkout" name="checkout" type="date" value="${toDate}" required>
                                                 </label>
-                                                <button type="button" class="btn btn-danger" onclick='window.location.href="order?name=check&idRoom=${room.idRoom}"' >Kiểm tra phòng trống</button>
                                                 <button type="submit" class="btn btn-danger">Gửi yêu cầu đặt phòng</button>
                                             </form>
 
@@ -80,10 +79,10 @@
                     <div class="shadow-none p-3 mb-12 col-12 bg-light rounded">
                         <h5 class="card-header">Hóa Đơn</h5>
                         <div class="card-body">
-                            <h5 class="card-title"><strong>Tên khách hàng: ${nameCustomer}</strong></h5>
-                            <h5 class="card-title"><strong>Ngày thuê: ${fromDate}</strong></h5>
-                            <h5 class="card-title"><strong>Ngày trả: ${toDate}</strong></h5>
-                            <h5 class="card-title"><strong>Số ngày thuê: ${days} ngày</strong></h5>
+                            <h5 class="card-title"><strong>Tên khách hàng:</strong></h5>
+                            <h5 class="card-title"><strong>Ngày thuê:</strong></h5>
+                            <h5 class="card-title"><strong>Ngày trả:</strong></h5>
+                            <h5 class="card-title"><strong>Số ngày thuê:</strong></h5>
                             <h5>Giá: ${room.price}/ngày</h5>
                             <p class="card-text"><strong>Thanh toán</strong></p>
                             <h5>${total}</h5>
