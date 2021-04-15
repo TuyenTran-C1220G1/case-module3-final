@@ -119,10 +119,8 @@
             <c:forEach var="hotel" items="${hotels}">
                 <div style="border-top-style:solid ;border-top-width: 1px; border-top-color: lightslategrey;margin-top: 5px">
                     <p style="border-top: 2px #cccc; margin: 0 0 5px; padding: 0; font-weight: 700; text-transform: capitalize; font-size: 18px">
-                        <a class style="text-decoration:none" href="#">${hotel.nameHotel}</a></p>
-                    <p style="color: #555;font-family: 'Open Sans',sans-serif;line-height: 1.4em;"> Bãi Bắc, Sơn
-                        Trà, Đà Nẵng</p>
-                    <div class="row">
+                        <a class style="text-decoration:none" href="room?idHotel=${hotel.idHotel}">${hotel.nameHotel}</a></p>
+                                        <div class="row">
                         <div class="col-4 hotel-image">
                             <img src="${hotel.imageHotel}" ;width="238px" height="179px" width="100%" height="100%"></img>
                         </div>

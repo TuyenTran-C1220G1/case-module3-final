@@ -1,22 +1,32 @@
-com/company/controller/HotelServlet.java
- com.company.controller.HotelServlet
-com/company/model/Order.java
- com.company.model.Order
-com/company/controller/RoomServlet.java
- com.company.controller.RoomServlet
-com/company/model/Customer.java
- com.company.model.Customer
-com/company/controller/CityServlet.java
- com.company.controller.CityServlet
+com/company/service/RoomService.java
+ com.company.service.RoomService
+com/company/service/CategoryService.java
+ com.company.service.CategoryService
 com/company/dao/DBConnection.java
  com.company.dao.DBConnection
-com/company/service/CityService.java
- com.company.service.CityService
 com/company/model/City.java
  com.company.model.City
 com/company/service/HotelService.java
  com.company.service.HotelService
 com/company/model/Room.java
  com.company.model.Room
+com/company/controller/HotelServlet.java
+ com.company.controller.HotelServlet
+com/company/model/Order.java
+ com.company.model.Order
+com/company/model/Customer.java
+ com.company.model.Customer
+com/company/controller/RoomServlet.java
+ com.company.controller.RoomServlet
+com/company/service/CityService.java
+ com.company.service.CityService
+com/company/controller/HomeServlet.java
+ com.company.controller.HomeServlet
+com/company/model/Category.java
+ com.company.model.Category
 com/company/model/Hotel.java
  com.company.model.Hotel
+com/company/service/OrderService.java
+ com.company.service.OrderService
+com/company/controller/OrderServlet.java
+ com.company.controller.OrderServlet

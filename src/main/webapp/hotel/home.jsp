@@ -15,44 +15,46 @@
 </head>
 <body>
 <!--nav-->
-<div class="container">
+
     <jsp:include page="header.jsp"></jsp:include>
-</div>
+
 <!--sss-->
 <div style="background-color: lightblue;height: 425px;padding: 20px">
     <div class="container">
-
         <div class="row">
-            <div class="col-4" style="background-color: blue;border-radius: 20px;padding: 15px">
-                <div class="mb-3"><h4 style="text-align: center">Tìm kiếm khách sạn</h4></div>
-                <div class="container">
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                            <option value="1">Đà nẵng</option>
-                            <option value="2">Bà rịa- Vũng tàu</option>
-                            <option value="3">Đà Lạt</option>
-                            <option value="4">Tp - HCM</option>
-                            <option value="5">Nha Trang</option>
-                            <option value="6">Phan Thiết</option>
+
+                <div class="col-4" style="background-color: blue;border-radius: 20px;padding: 15px">
+                    <form action="find" method="get">
+                    <div class="mb-3"><h4 style="text-align: center">Tìm kiếm khách sạn</h4></div>
+                    <div class="container">
+                        <div class="form-floating mb-3">
+                            <select name="name" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                <c:forEach var="city" items="${cities}">
+                                    <option value="1">${city.nameCity}</option>
+                                </c:forEach>
+                            </select>
+                            <label for="floatingSelect">Nhập địa điểm</label>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" placeholder="Ngày thuê"
+                                   aria-label="default input example" type="Date">
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="Date" placeholder="Ngày trả"
+                                   aria-label="default input example">
+                        </div>
+                        <select class="form-select form-select-md mb-3" aria-label="Default select example">
+                            <option selected>Loại phòng</option>
+                            <option value="1">phòng đơn</option>
+                            <option value="2">phòng đôi</option>
                         </select>
-                        <label for="floatingSelect">Nhập địa điểm</label>
+                        <button type="submit" class="btn btn-primary ">Tìm kiếm</button>
                     </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" placeholder="Ngày thuê"
-                               aria-label="default input example">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="text" placeholder="Ngày trả"
-                               aria-label="default input example">
-                    </div>
-                    <select class="form-select form-select-md mb-3" aria-label="Default select example">
-                        <option selected>Loại phòng</option>
-                        <option value="1">1 phòng ngủ</option>
-                        <option value="2">2 phòng ngủ</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary ">Tìm kiếm</button>
+
+                    </form>
                 </div>
-            </div>
+
+
             <div id="carouselExampleCaptions" class="carousel slide col-md-8" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -64,13 +66,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="carousel1.webp" class="d-block w-100" alt="...">
+                        <img src="imageCity/carousel1.webp" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="carousel2.webp" class="d-block w-100" alt="...">
+                        <img src="imageCity/carousel2.webp" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="carousel3.webp" class="d-block w-100" alt="...">
+                        <img src="imageCity/carousel3.webp" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
