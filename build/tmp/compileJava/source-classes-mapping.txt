@@ -1,5 +1,5 @@
-com/company/controller/FindServlet.java
- com.company.controller.FindServlet
+com/company/controller/HomeServlet.java
+ com.company.controller.HomeServlet
 com/company/dao/DBConnection.java
  com.company.dao.DBConnection
 com/company/service/LoginService.java
@@ -10,8 +10,8 @@ com/company/controller/HotelServlet.java
  com.company.controller.HotelServlet
 com/company/model/Order.java
  com.company.model.Order
-com/company/service/FindService.java
- com.company.service.FindService
+com/company/model/Hotel.java
+ com.company.model.Hotel
 com/company/service/CityService.java
  com.company.service.CityService
 com/company/service/OrderService.java
@@ -42,9 +42,9 @@ com/company/controller/LogoutServlet.java
  com.company.controller.LogoutServlet
 com/company/controller/RoomServlet.java
  com.company.controller.RoomServlet
-com/company/model/Hotel.java
- com.company.model.Hotel
-com/company/controller/HomeServlet.java
- com.company.controller.HomeServlet
+com/company/service/FindService.java
+ com.company.service.FindService
+com/company/controller/FindServlet.java
+ com.company.controller.FindServlet
 com/company/controller/OrderServlet.java
  com.company.controller.OrderServlet

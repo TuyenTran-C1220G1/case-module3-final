@@ -14,7 +14,7 @@
     <jsp:include page="header.jsp"></jsp:include>
     <div class="container" style="margin-top: 30px">
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -39,34 +39,22 @@
                                     </dl>
                                 </div>
                                 <div style="border-top: dashed; border-top-color: lightslategrey; margin-top: 20px ">
-                                    <h4 style="margin-top: 20px"><strong>Thông tin liên hệ</strong></h4>
+
                                     <div class="col-md-6">
+                                        <h3 style="margin-top: 20px"><strong>Nhập ngày thuê</strong></h3>
                                         <div class="form-group">
-                                            <form action="/order?name=add&idRoom=${room.idRoom}" onclick="validateCheckin();validateCheckout()" method="post" onsubmit="check()">
-                                                <label>
-                                                    Họ và tên <br>
-                                                    <input  name="nameCustomer" type="text" value="${nameCustomer}" required>
-                                                </label>
-                                                <label>
-                                                    Số Điện thoại <br>
-                                                    <input  name="phone" type="phone" value="${phone}" required>
-                                                </label>
-                                                <label>
-                                                    Địa chỉ <br>
-                                                    <input  name="address" type="text" value="${address}" required>
-                                                </label>
+                                            <form action="/order?name=find&idRoom=${room.idRoom}" onclick="validateCheckin();validateCheckout()" method="post" onsubmit="check()">
                                                 <label>
                                                     Ngày đặt <br>
-                                                    <input  id="checkin" name="checkin" type="date" value="${fromDate}" required>
-                                                </label>
+                                                    <input style="height: 30px;width: 300px" id="checkin" name="checkin" type="date" value="${fromDate}" required>
+                                                </label> <br>
                                                 <label>
                                                     Ngày trả <br>
-                                                    <input id="checkout" name="checkout" type="date" value="${toDate}" required>
-                                                </label>
-                                                form action="/order?name=find&idRoom=${room.idRoom}" onclick="validateCheckin();validateCheckout()" method="post" onsubmit="check()">
-                                                <button type="submit" class="btn btn-danger">Kiểm tra phòng trống</button>
-                                            </form>
-                                                <button type="submit" class="btn btn-danger">Gửi yêu cầu đặt phòng</button>
+                                                    <input style="height: 30px;width: 300px" id="checkout" name="checkout" type="date" value="${toDate}" required>
+                                                </label> <br>
+
+                                                <button type="submit" class="btn btn-danger">Kiểm tra</button>
+                                                <button type="submit" class="btn btn-danger ${add}">Đặt phòng</button>
                                             </form>
 
                                         </div>
@@ -74,25 +62,41 @@
                                 </div>
                             </div>
                         </div>
+
+                        <c:forEach var="room" items="${rooms}">
+                            <div style="border-top-style:solid ;border-top-width: 5px; border-top-color: lightslategrey;margin-top: 8px">
+                                <h4 style="color: #0081b0">${room.nameHotel}</h4>
+                                <h4 style="color: #0081b0">Tên Phòng: ${room.nameRoom}</h4>
+                                <h4 style="color: #0081b0">Loại Phòng: ${room.nameCate}</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style=" margin-top: 5px">
+                                    <img src="${room.imageRoom}" style="width: 200px;height: 200px">
+                                </div>
+                                <div class="col-9" style=" margin-top: 5px">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <span style="padding-left: 30px;text-align: left">${room.descriptionRoom}</span> <br>
+                                        </div>
+                                        <div class="col-3" style="text-align: center;vertical-align: middle;margin: auto" ;>
+                                            <h3 style="color: #4caf50">Đơn giá: ${room.price}đ</h3>
+                                        </div>
+                                        <div class="col-1" ; style="margin: auto;vertical-align: middle">
+                                            <button type="button" class="btn btn-danger" onclick='window.location.href="/order?idRoom=${room.idRoom}"'>Đặt Phòng
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5">
-                <div class="card">
-                    <div class="shadow-none p-3 mb-12 col-12 bg-light rounded">
-                        <h5 class="card-header">Hóa Đơn</h5>
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>Tên khách hàng:</strong></h5>
-                            <h5 class="card-title"><strong>Ngày thuê:</strong></h5>
-                            <h5 class="card-title"><strong>Ngày trả:</strong></h5>
-                            <h5 class="card-title"><strong>Số ngày thuê:</strong></h5>
-                            <h5>Giá: ${room.price}/ngày</h5>
-                            <p class="card-text"><strong>Thanh toán</strong></p>
-                            <h5>${total}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+
+
         </div>
     </div>
     <jsp:include page="footer.jsp"></jsp:include>

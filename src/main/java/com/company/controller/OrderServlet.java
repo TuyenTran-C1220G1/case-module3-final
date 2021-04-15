@@ -56,8 +56,9 @@ public class OrderServlet extends HttpServlet {
 
                 Date fromDate = java.sql.Date.valueOf(request.getParameter("checkin"));
                 Date toDate = java.sql.Date.valueOf(request.getParameter("checkout"));
+                int idHotel=findService.getIdHotel(idRoom);
 
-                List<RoomDetail> listEmptyRoom = findService.findEmptyRoom(fromDate, toDate);
+                List<RoomDetail> listEmptyRoom = findService.findEmptyRoom(idHotel,fromDate, toDate);
                 System.out.println(listEmptyRoom.size());
                 boolean addable = false;
                 for (RoomDetail room : listEmptyRoom) {
@@ -81,29 +82,28 @@ public class OrderServlet extends HttpServlet {
                     Double total = days * roomDetail.getPrice();
                     request.setAttribute("days", days);
                     request.setAttribute("total", total);
+                    request.setAttribute("add","active");
                     request.setAttribute("message", "B&#7841;n &#273;&#227; &#273;&#7863;t ph&#242;ng th&#224;nh c&#244;ng!");
-                    request.getRequestDispatcher("hotel/order.jsp").forward(request, response);
+                    request.getRequestDispatcher("hotel/order-detail.jsp").forward(request, response);
                 }
                 else {
-                    String message="Ph&#242;ng" +roomDetail.getNameRoom()+" &#273;&#227; c&#243; kh&#225;ch thu&#234; trong kho&#7843;ng th&#7901;i gian tr&#234;n";
+                    String message="Ph&#242;ng " +roomDetail.getNameRoom()+" &#273;&#227; c&#243; kh&#225;ch thu&#234; trong kho&#7843;ng th&#7901;i gian tr&#234;n";
                     request.setAttribute("message", message);
+                    request.setAttribute("add","");
                     request.getRequestDispatcher("hotel/order-error.jsp").forward(request, response);
                 }
                 break;
+
             case"find":
                 idRoom = Integer.parseInt(request.getParameter("idRoom"));
                 roomDetail = roomService.getRoomById(idRoom);
                 request.setAttribute("room", roomDetail);
 
-                nameCustomer = request.getParameter("nameCustomer");
-                phone = Integer.parseInt(request.getParameter("phone"));
-                address = request.getParameter("address");
-
                 fromDate = java.sql.Date.valueOf(request.getParameter("checkin"));
                 toDate = java.sql.Date.valueOf(request.getParameter("checkout"));
+                idHotel=findService.getIdHotel(idRoom);
 
-                listEmptyRoom = findService.findEmptyRoom(fromDate, toDate);
-                System.out.println(listEmptyRoom.size());
+                listEmptyRoom = findService.findEmptyRoom(idHotel,fromDate, toDate);
                 addable = false;
                 for (RoomDetail room : listEmptyRoom) {
                     if (room.getIdRoom() == roomDetail.getIdRoom()) {
@@ -112,20 +112,24 @@ public class OrderServlet extends HttpServlet {
                     }
                 }
 
-                request.setAttribute("nameCustomer",nameCustomer);
-                request.setAttribute("phone",phone);
-                request.setAttribute("address",address);
+
                 request.setAttribute("fromDate",fromDate);
                 request.setAttribute("toDate",toDate);
 
                 if (addable) {
-                    request.setAttribute("message", "B&#7841;n &#273;&#227; &#273;&#7863;t ph&#242;ng th&#224;nh c&#244;ng!");
+                    String message="Ph&#242;ng " +roomDetail.getNameRoom()+" c&#242;n tr&#7889;ng";
+                    request.setAttribute("message", message);
+                    request.setAttribute("add","active");
                     request.getRequestDispatcher("hotel/order.jsp").forward(request, response);
+                    System.out.println("ok");
                 }
                 else {
-                    String message="Ph&#242;ng" +roomDetail.getNameRoom()+" &#273;&#227; c&#243; kh&#225;ch thu&#234; trong kho&#7843;ng th&#7901;i gian tr&#234;n";
+                    String message="Ph&#242;ng" +roomDetail.getNameRoom()+" &#273;&#227; c&#243; kh&#225;ch thu&#234; trong kho&#7843;ng th&#7901;i gian tr&#234;n." +
+                            "Vui l&#242;ng ch&#7885;n ph&#242;ng kh&#225;c &#7903; ph&#237;a d&#432;&#7899;i";
                     request.setAttribute("message", message);
-                    request.getRequestDispatcher("hotel/order-error.jsp").forward(request, response);
+                    request.setAttribute("rooms",listEmptyRoom);
+                    request.setAttribute("add","disabled");
+                    request.getRequestDispatcher("hotel/order.jsp").forward(request, response);
                 }
                 break;
         }

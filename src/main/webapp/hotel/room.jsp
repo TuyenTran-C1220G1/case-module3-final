@@ -16,31 +16,25 @@
             </div>
 
             <c:forEach var="room" items="${rooms}">
-                <div style="border-top-style:solid ;border-top-width: 5px; border-top-color: lightslategrey;margin-top: 2px">
+                <div style="border-top-style:solid ;border-top-width: 5px; border-top-color: lightslategrey;margin-top: 8px">
                     <h4 style="color: #0081b0">${room.nameHotel}</h4>
                     <h4 style="color: #0081b0">Tên Phòng: ${room.nameRoom}</h4>
                     <h4 style="color: #0081b0">Loại Phòng: ${room.nameCate}</h4>
                 </div>
                 <div class="row">
-
                     <div class="col-3" style=" margin-top: 5px">
-                        <img src="${room.imageRoom}"
-                             width="100%" height="100%">
-                        </img>
-
+                        <img src="${room.imageRoom}" style="width: 300px;height: 300px">
                     </div>
                     <div class="col-9" style=" margin-top: 5px">
                         <div class="row">
                             <div class="col-4">
-                                <span style="padding: 5px">${room.descriptionRoom}</span> <br>
-
+                                <span style="padding: 5px;text-align: left">${room.descriptionRoom}</span> <br>
                             </div>
-                            <div class="col-3" style="text-align: center" ;>
-                                <h3 style="color: #4caf50">Đơn giá: ${room.price}</h3>
+                            <div class="col-3" style="text-align: center;vertical-align: middle;margin: auto" ;>
+                                <h3 style="color: #4caf50">Đơn giá: ${room.price}đ</h3>
                             </div>
-                            <div class="col-1" ; style="margin: auto">
-                                <button type="button" class="btn btn-danger"
-                                        onclick='window.location.href="/order?idRoom=${room.idRoom}"'>Đặt Phòng
+                            <div class="col-1" ; style="margin: auto;vertical-align: middle">
+                                <button type="button" class="btn btn-danger" onclick='window.location.href="/order?idRoom=${room.idRoom}"'>Đặt Phòng
                                 </button>
                             </div>
                         </div>
