@@ -74,4 +74,17 @@ public class RoomDetail {
     public void setNameCate(String nameCate) {
         this.nameCate = nameCate;
     }
+
+    @Override
+    public String toString() {
+        return "RoomDetail{" +
+                "idRoom=" + idRoom +
+                ", nameRoom='" + nameRoom + '\'' +
+                ", descriptionRoom='" + descriptionRoom + '\'' +
+                ", price=" + price +
+                ", imageRoom='" + imageRoom + '\'' +
+                ", nameHotel='" + nameHotel + '\'' +
+                ", nameCate='" + nameCate + '\'' +
+                '}';
+    }
 }

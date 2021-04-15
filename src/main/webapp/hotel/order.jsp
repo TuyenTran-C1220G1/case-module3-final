@@ -33,35 +33,37 @@
                                           style="color: yellow"></span>
                                     <dl>
                                         <dt><h3>${room.nameRoom}</h3></dt>
-                                        <dt><h3>Loai Phòng: ${room.nameCate}</h3></dt>
+                                        <dt><h3>Loại Phòng: ${room.nameCate}</h3></dt>
                                         <dt><h3>Giá Phòng: ${room.price}</h3></dt>
+                                        <dt><h2 style="color: red">${message}</h2></dt>
                                     </dl>
                                 </div>
                                 <div style="border-top: dashed; border-top-color: lightslategrey; margin-top: 20px ">
                                     <h4 style="margin-top: 20px"><strong>Thông tin liên hệ</strong></h4>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <form action="/order?name=add" onclick="validateCheckin();validateCheckout()" method="post" onsubmit="check()">
+                                            <form action="/order?name=add&idRoom=${room.idRoom}" onclick="validateCheckin();validateCheckout()" method="post" onsubmit="check()">
                                                 <label>
                                                     Họ và tên <br>
-                                                    <input  name="nameCustomer" type="text" value="" required>
+                                                    <input  name="nameCustomer" type="text" value="${nameCustomer}" required>
                                                 </label>
                                                 <label>
                                                     Số Điện thoại <br>
-                                                    <input  name="phone" type="phone" value="" required>
+                                                    <input  name="phone" type="phone" value="${phone}" required>
                                                 </label>
                                                 <label>
                                                     Địa chỉ <br>
-                                                    <input  name="address" type="text" value="" required>
+                                                    <input  name="address" type="text" value="${address}" required>
                                                 </label>
                                                 <label>
                                                     Ngày đặt <br>
-                                                    <input  id="checkin" name="fromDate" type="date" value="" required>
+                                                    <input  id="checkin" name="checkin" type="date" value="${fromDate}" required>
                                                 </label>
                                                 <label>
                                                     Ngày trả <br>
-                                                    <input id="checkout" name="toDate" type="date" value="" required>
+                                                    <input id="checkout" name="checkout" type="date" value="${toDate}" required>
                                                 </label>
+                                                <button type="button" class="btn btn-danger" onclick='window.location.href="order?name=check&idRoom=${room.idRoom}"' >Kiểm tra phòng trống</button>
                                                 <button type="submit" class="btn btn-danger">Gửi yêu cầu đặt phòng</button>
                                             </form>
 
@@ -78,10 +80,13 @@
                     <div class="shadow-none p-3 mb-12 col-12 bg-light rounded">
                         <h5 class="card-header">Hóa Đơn</h5>
                         <div class="card-body">
-                            <h5 class="card-title"><strong>1 phòng/đêm</strong></h5>
-                            <h5>PRICE</h5>
+                            <h5 class="card-title"><strong>Tên khách hàng: ${nameCustomer}</strong></h5>
+                            <h5 class="card-title"><strong>Ngày thuê: ${fromDate}</strong></h5>
+                            <h5 class="card-title"><strong>Ngày trả: ${toDate}</strong></h5>
+                            <h5 class="card-title"><strong>Số ngày thuê: ${days} ngày</strong></h5>
+                            <h5>Giá: ${room.price}/ngày</h5>
                             <p class="card-text"><strong>Thanh toán</strong></p>
-                            <h5>Tổng Tiền</h5>
+                            <h5>${total}</h5>
                         </div>
                     </div>
                 </div>
@@ -101,7 +106,7 @@
 
     function validateCheckin() {
         var fromDate = new Date().toISOString().split('T')[0];
-        document.getElementsById("checkin")[0].setAttribute('min', fromDate);
+        document.getElementsByName("checkin")[0].setAttribute('min', fromDate);
     }
 
     function validateCheckout() {

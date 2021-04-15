@@ -36,7 +36,7 @@
 
                             </div>
                             <div class="col-3" style="text-align: center" ;>
-                                <h2 style="color: #4caf50">${room.price}</h2>
+                                <h3 style="color: #4caf50">Đơn giá: ${room.price}</h3>
                             </div>
                             <div class="col-1" ; style="margin: auto">
                                 <button type="button" class="btn btn-danger"

@@ -7,7 +7,7 @@
                 <div class="navbar-collapse col-md-6" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <img src="logo.PNG" style="height: 50px;width: 70px;" onclick="window.open('/city')">
+                            <img src="imageCity/dalat.webp" style="height: 50px;width: 70px;" onclick="window.open('/city')">
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>

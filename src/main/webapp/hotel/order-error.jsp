@@ -79,10 +79,10 @@
                     <div class="shadow-none p-3 mb-12 col-12 bg-light rounded">
                         <h5 class="card-header">Hóa Đơn</h5>
                         <div class="card-body">
-                            <h5 class="card-title"><strong>Tên khách hàng: ${nameCustomer}</strong></h5>
-                            <h5 class="card-title"><strong>Ngày thuê: ${fromDate}</strong></h5>
-                            <h5 class="card-title"><strong>Ngày trả: ${toDate}</strong></h5>
-                            <h5 class="card-title"><strong>Số ngày thuê: ${days} ngày</strong></h5>
+                            <h5 class="card-title"><strong>Tên khách hàng:</strong></h5>
+                            <h5 class="card-title"><strong>Ngày thuê:</strong></h5>
+                            <h5 class="card-title"><strong>Ngày trả:</strong></h5>
+                            <h5 class="card-title"><strong>Số ngày thuê:</strong></h5>
                             <h5>Giá: ${room.price}/ngày</h5>
                             <p class="card-text"><strong>Thanh toán</strong></p>
                             <h5>${total}</h5>
