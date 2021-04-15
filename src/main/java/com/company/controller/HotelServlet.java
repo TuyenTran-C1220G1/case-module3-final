@@ -19,11 +19,10 @@ public class HotelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idCity = Integer.parseInt(request.getParameter("idCity"));
-        System.out.println(idCity);
         List<Hotel> hotelList = hotelService.findHotelByCity(idCity);
-        for (Hotel hotel : hotelList) {
-            System.out.println(hotel);
-        }
+//        for (Hotel hotel : hotelList) {
+//            System.out.println(hotel);
+//        }
         City city = cityService.findCityById(idCity);
         request.setAttribute("city", city);
         request.setAttribute("hotels", hotelList);

@@ -10,7 +10,7 @@
 </head>
 <body>
 <!--NoiDung-->
-<div class="container">
+
     <jsp:include page="header.jsp"></jsp:include>
     <div class="container" style="margin-top: 30px">
         <div class="row">
@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="shadow-none p-3 mb-12 col-12 bg-light rounded">
-                                    <h5>Khách sạn ${hotel.nameHotel}</h5>
+                                    <h3><strong>${room.nameHotel}</strong></h3>
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"
                                           style="color: yellow"></span>
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"
@@ -32,34 +32,37 @@
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"
                                           style="color: yellow"></span>
                                     <dl>
-                                        <dt>Nhận phòng:</dt>
-                                        <dd>15:00, Thứ ba, ngày 13/04/2021</dd>
-                                        <dt>Trả phòng:</dt>
-                                        <dd>12:00, Thứ tư, ngày 14/04/2021</dd>
-                                        <dt>Số đêm</dt>
-                                        <dd>1 Đêm</dd>
+                                        <dt><h3>${room.nameRoom}</h3></dt>
+                                        <dt><h3>Loai Phòng: ${room.nameCate}</h3></dt>
+                                        <dt><h3>Giá Phòng: ${room.price}</h3></dt>
                                     </dl>
                                 </div>
                                 <div style="border-top: dashed; border-top-color: lightslategrey; margin-top: 20px ">
                                     <h4 style="margin-top: 20px"><strong>Thông tin liên hệ</strong></h4>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <form action="add" method="post">
+                                            <form action="/order?name=add" onclick="validateCheckin();validateCheckout()" method="post" onsubmit="check()">
                                                 <label>
                                                     Họ và tên <br>
-                                                    <input id="name_customer" name="name_customer" type="text" value="">
+                                                    <input  name="nameCustomer" type="text" value="" required>
                                                 </label>
-                                                <div>Check họ tên</div>
                                                 <label>
                                                     Số Điện thoại <br>
-                                                    <input id="phone_customer" name="phone_customer" type="phone" value="">
+                                                    <input  name="phone" type="phone" value="" required>
                                                 </label>
-                                                <div>Check sdt</div>
                                                 <label>
                                                     Địa chỉ <br>
-                                                    <input id="adress_customer" name="adress_customer" type="text" value="">
+                                                    <input  name="address" type="text" value="" required>
                                                 </label>
-                                                <button type="button" class="btn btn-danger">Gửi yêu cầu đặt phòng</button>
+                                                <label>
+                                                    Ngày đặt <br>
+                                                    <input  id="checkin" name="fromDate" type="date" value="" required>
+                                                </label>
+                                                <label>
+                                                    Ngày trả <br>
+                                                    <input id="checkout" name="toDate" type="date" value="" required>
+                                                </label>
+                                                <button type="submit" class="btn btn-danger">Gửi yêu cầu đặt phòng</button>
                                             </form>
 
                                         </div>
@@ -86,9 +89,25 @@
         </div>
     </div>
     <jsp:include page="footer.jsp"></jsp:include>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
+<script>
+    function check() {
+        var dateControl = document.querySelector('input[type="date"]')
+        return dateControl.value
+    }
+
+    function validateCheckin() {
+        var fromDate = new Date().toISOString().split('T')[0];
+        document.getElementsById("checkin")[0].setAttribute('min', fromDate);
+    }
+
+    function validateCheckout() {
+        var toDate = new Date(new Date(document.getElementById("checkin").value).getTime()+24*60*60*1000).toISOString().split('T')[0];
+        document.getElementById("checkout").setAttribute("min", toDate);
+    }
+</script>
 </body>
 </html>

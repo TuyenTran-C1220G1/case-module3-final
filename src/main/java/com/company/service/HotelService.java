@@ -37,4 +37,26 @@ public class HotelService {
         }
         return hotelList;
     }
+
+    public Hotel getHotelById(int idHotel) {
+        Hotel hotel = null;
+        String sql = "select id_hotel,name_hotel,description_hotel,image_hotel,hotel.id_city from hotel where hotel.id_Hotel=?";
+        try {
+            conn = DBConnection.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, idHotel);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                idHotel = rs.getInt("id_hotel");
+                String nameHotel = rs.getString("name_hotel");
+                String descriptionHotel = rs.getString("description_hotel");
+                String imageHotel = rs.getString("image_hotel");
+                int idCity = rs.getInt("id_city");
+                hotel = new Hotel(idHotel, nameHotel, descriptionHotel, imageHotel, idCity);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return hotel;
+    }
 }

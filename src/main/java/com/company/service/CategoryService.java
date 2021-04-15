@@ -13,7 +13,7 @@ public class CategoryService {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    public Category findCategoryById(int idCate){
+    public Category getCategoryById(int idCate){
         String sql ="select * from category where id_Cate=?";
         try{
             conn = DBConnection.getConnection();
