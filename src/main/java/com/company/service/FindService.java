@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +19,7 @@ public class FindService {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public List<RoomDetail> findRoom(int idCate, int id_city, Date checkin ,Date checkout) {
+    public List<RoomDetail> findRoomFromAddress(int idCate, int id_city, Date checkin , Date checkout) {
         List<RoomDetail> list = new ArrayList<>();
         String sql ="select * from room join hotel using (id_hotel)\n" +
                 "join city using (id_city) join category using(id_cate)\n" +
@@ -40,8 +42,9 @@ public class FindService {
                 int price = rs.getInt("price");
                 String image = rs.getString("image_room");
                 String namecate = rs.getString("name_cate");
+                int idHotel = rs.getInt("id_hotel");
                 String nameHotel = rs.getString("name_hotel");
-                list.add(new RoomDetail(id, name, description, price, image,nameHotel,namecate));
+                list.add(new RoomDetail(id, name, description, price, image,nameHotel,idHotel,namecate));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -49,23 +52,15 @@ public class FindService {
         return list;
     }
 
-    public List<RoomDetail> findEmptyRoom(Date checkin ,Date checkout) {
+    public List<RoomDetail> findEmptyRoom(int id_hotel ,Date checkin ,Date checkout) {
         List<RoomDetail> list = new ArrayList<>();
-//        String sql ="select * from room join hotel using (id_hotel)\n" +
-//                "join city using (id_city) join category using(id_cate)\n" +
-//                "where name_cate = ? and name_hotel = ? and id_room NOT IN (\n" +
-//                "   SELECT DISTINCT id_room\n" +
-//                "   FROM orders\n" +
-//                "   WHERE todate >= ? AND fromdate <= ?);";
-
-        String sql= "select * from room join hotel using (id_hotel) join category using(id_cate) where id_room NOT IN (SELECT DISTINCT id_room FROM orders WHERE todate >=? AND fromdate <=?);";
+        String sql= "select * from room join hotel using (id_hotel) where id_hotel = ? and id_room NOT IN (SELECT DISTINCT id_room FROM orders WHERE todate >=? AND fromdate <=?);";
         try {
             conn = DBConnection.getConnection();
             ps = conn.prepareStatement(sql);
-//            ps.setString(1, nameCate);
-//            ps.setString(2,nameHotel);
-            ps.setDate(1, (java.sql.Date) checkin);
-            ps.setDate(2, (java.sql.Date) checkout);
+            ps.setInt(1,id_hotel);
+            ps.setDate(2, (java.sql.Date) checkin);
+            ps.setDate(3, (java.sql.Date) checkout);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_room");
@@ -74,8 +69,9 @@ public class FindService {
                 int price = rs.getInt("price");
                 String image = rs.getString("image_room");
                 String namecate = rs.getString("name_cate");
+                int idHotel = rs.getInt("id_hotel");
                 String nameHotel = rs.getString("name_hotel");
-                list.add(new RoomDetail(id, name, description, price, image,nameHotel,namecate));
+                list.add(new RoomDetail(id, name, description, price, image,nameHotel,idHotel,namecate));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

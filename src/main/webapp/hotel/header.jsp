@@ -15,6 +15,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
+                        <c:if test="${sessionScope.customer.isAdmin == 1}">
+                            <li><a href="hotel/managerHotel.jsp" class="nav-link">Manage Hotel</a></li>
+                        </c:if>
                         <c:if test="${sessionScope.customer != null}">
                             <li><a class="nav-link">Hello ${sessionScope.customer.nameCustomer}</a></li>
                         </c:if>

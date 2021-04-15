@@ -17,13 +17,13 @@ public class RoomService {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public List<RoomDetail> findRoomByHotel(int idHotel) {
+    public List<RoomDetail> findRoomByHotel(int id_hotel) {
         List<RoomDetail> list = new ArrayList<>();
         String sql = "select * from room join hotel using(id_hotel) join category using(id_cate) where room.id_Hotel=?";
         try {
             conn = DBConnection.getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, idHotel);
+            ps.setInt(1, id_hotel);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_room");
@@ -32,8 +32,9 @@ public class RoomService {
                 int price = rs.getInt("price");
                 String image = rs.getString("image_room");
                 String namecate = rs.getString("name_cate");
+                int idHotel = rs.getInt("id_hotel");
                 String nameHotel = rs.getString("name_hotel");
-                list.add(new RoomDetail(id, name, description, price, image,nameHotel,namecate));
+                list.add(new RoomDetail(id, name, description, price, image,nameHotel,idHotel,namecate));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -55,8 +56,9 @@ public class RoomService {
                 int price = rs.getInt("price");
                 String image = rs.getString("image_room");
                 String namecate = rs.getString("name_cate");
+                int idHotel = rs.getInt("id_hotel");
                 String nameHotel = rs.getString("name_hotel");
-                return new RoomDetail(id, name, description, price, image,nameHotel,namecate);
+                return new RoomDetail(id, name, description, price, image,nameHotel,idHotel,namecate);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

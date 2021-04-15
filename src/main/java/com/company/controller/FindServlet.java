@@ -1,6 +1,5 @@
 package com.company.controller;
 
-import com.company.model.Room;
 import com.company.model.RoomDetail;
 import com.company.service.FindService;
 
@@ -23,7 +22,7 @@ public class FindServlet extends HttpServlet {
         System.out.println(city);
         Date checkin = java.sql.Date.valueOf(request.getParameter("checkin"));
         Date checkout = java.sql.Date.valueOf(request.getParameter("checkout"));
-        List<RoomDetail> list = findService.findRoom(id, city, checkin, checkout);
+        List<RoomDetail> list = findService.findRoomFromAddress(id, city, checkin, checkout);
 
         request.setAttribute("rooms", list);
         request.getRequestDispatcher("/hotel/room.jsp").forward(request, response);

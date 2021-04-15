@@ -7,15 +7,17 @@ public class RoomDetail {
     private double price;
     private String imageRoom;
     private String nameHotel;
+    private int idHotel;
     private String nameCate;
 
-    public RoomDetail(int idRoom, String nameRoom, String descriptionRoom, double price, String imageRoom, String nameHotel, String nameCate) {
+    public RoomDetail(int idRoom, String nameRoom, String descriptionRoom, double price, String imageRoom, String nameHotel,int idHotel, String nameCate) {
         this.idRoom = idRoom;
         this.nameRoom = nameRoom;
         this.descriptionRoom = descriptionRoom;
         this.price = price;
         this.imageRoom = imageRoom;
         this.nameHotel = nameHotel;
+        this.idHotel = idHotel;
         this.nameCate = nameCate;
     }
 
@@ -73,6 +75,14 @@ public class RoomDetail {
 
     public void setNameCate(String nameCate) {
         this.nameCate = nameCate;
+    }
+
+    public int getIdHotel() {
+        return idHotel;
+    }
+
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
     }
 
     @Override

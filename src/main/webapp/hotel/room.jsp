@@ -26,7 +26,6 @@
                     <div class="col-3" style=" margin-top: 5px">
                         <img src="${room.imageRoom}"
                              width="100%" height="100%">
-                        </img>
 
                     </div>
                     <div class="col-9" style=" margin-top: 5px">

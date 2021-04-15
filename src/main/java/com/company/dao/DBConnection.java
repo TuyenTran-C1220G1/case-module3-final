@@ -9,7 +9,7 @@ public class DBConnection {
         String jdbcUrl = "jdbc:mysql://localhost:3306/hotelmanager";
         String jdbcDriver = "com.mysql.cj.jdbc.Driver";
         String username = "root";
-        String password = "123456";
+        String password = "21051994";
         Connection connection = null;
         try {
             Class.forName(jdbcDriver);
