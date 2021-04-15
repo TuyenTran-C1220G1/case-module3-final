@@ -87,4 +87,5 @@ public class Customer {
     public void setIsAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
+//    sdsads
 }
